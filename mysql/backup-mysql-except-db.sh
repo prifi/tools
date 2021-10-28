@@ -15,7 +15,7 @@ dbname=`mysql -u$user -p$passwd -e "show databases;" |egrep -v "Database|mysql|p
 
 #: remote host info
 remoteuser='root'
-remotehost='47.90.242.181'
+remotehost=''
 
 #: remote backup path
 currnet_ip=`ifconfig eth0 |grep "inet addr"|sed -n '/inet addr/s/^[^:]*:\([0-9.]\{7,15\}\) .*/\1/p'`

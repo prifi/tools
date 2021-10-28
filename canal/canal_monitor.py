@@ -45,5 +45,5 @@ if __name__ == '__main__':
     errorInfo = get_errorInfo()
     data = out_foramtStr(siteName, errorInfo)
     if errorInfo:
-        robotUrl = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=9877effa-41fb-4855-910f-e20499e33937'
+        robotUrl = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxx'
         requests.post(robotUrl, json=data)
