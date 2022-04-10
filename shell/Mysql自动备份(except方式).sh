@@ -1,4 +1,4 @@
-#!/bin/sh
+!/bin/sh
 #Created by AukeyIT
 set -eu
 
