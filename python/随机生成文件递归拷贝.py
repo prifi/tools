@@ -45,6 +45,7 @@ def file_manager(n=20):
     _to_copy(src_dir, dst_dir)
 
     def _del_file(dir):
+        '仅删除指定目录下的为字母文件'
         # print(*[ path for path in (Path('tmp').rglob('**/[a-z]*')) if not path.is_dir() ], sep='\n')
         fs = [path for path in dir.rglob('**/[a-z]*') if not path.is_dir()]
         for j in fs:
