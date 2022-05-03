@@ -2,7 +2,7 @@
 #
 
 ## Set Env
-RemoteIp='172.22.0.208'
+RemoteIp=''
 RemotePass=''
 LogDate=$(date +%Y%m%d%H)
 ScriptName=$(basename $0 .sh)
