@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    <!-- <script src="/static/js/jquerymin.js"></script> 写死不好 -->
+    <script src="{{ url_for('static', filename='js/jquerymin.js') }}"></script>
+</head>
+<body>
+    <!-- <form action="/auth" method="post" id="auth"> 使用ajax异步提交 xmlhttprequest-->
+    <form method="post" id="auth">
+        <table border="1">
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="username" value="fly"></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="password" name="password" value="123"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="提交"><input type="reset" value="重置"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<script>
+    $(function(){
+        $('#auth').submit(function(event){
+            event.preventDefault()  // 阻止默认行为 => 提交
+            console.log('~~~~', event);
+            // 验证用户名密码，客户端验证
+            const fm = new FormData(event.target);
+            const username = fm.get('username')
+            const password = fm.get('password')
+            // ajax xmlhttprequest 异步提交，如果是前后端分离注意跨域问题 ~ ^/api rewrite 127.0.0.1:80/
+            $.post("/auth", {username, password}, function(data){   // data 是返回的数据
+                console.log(data, '+++++');
+                if (data.meta.code) {
+                    // 验证失败动作
+                    console.log(data.meta.msg);
+                    return window.alert(data.meta.msg);
+                }
+                // 验证成功动作
+                window.location.href = '/'
+            });
+            // 'meta': {'code': 1, 'msg': '用户名或密码错误'}
+        });
+    });
+</script>
